@@ -1,5 +1,7 @@
 # 🚀 E-Book Platform - Mikroservis Projesi Özeti
 
+> **Readme.md dosyası claude sonnet 4 ile oluşturulmuştur.**
+
 ## 🎯 Proje Amacı
 Resilience patterns öğrenmek için minimal mikroservis mimarisi
 
