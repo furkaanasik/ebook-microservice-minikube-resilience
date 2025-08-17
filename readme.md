@@ -38,7 +38,7 @@ Resilience patterns öğrenmek için minimal mikroservis mimarisi
 * Event-driven architecture
 * Production-ready deployment
 
-## 📋 Güncellenmiş Development Sırası
+## 📋 Development Sırası
 
 ### **Phase 1: Foundation** 
 * [x] **Minikube + Istio kurulumu**
