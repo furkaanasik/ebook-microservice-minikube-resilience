@@ -45,8 +45,8 @@ Resilience patterns öğrenmek için minimal mikroservis mimarisi
 * [ ] **Basic Observability stack** (Prometheus + Grafana)
 
 ### **Phase 2: Core Services**
-* [ ] **User Service (Java Spring Boot)**
-* [ ] **User Service Kubernetes deployment + Istio config**
+* [x] **User Service (Java Spring Boot)**
+* [x] **User Service Kubernetes deployment + Istio config**
 * [ ] **Book Service (Go Gin)** 
 * [ ] **Book Service Kubernetes deployment + Istio config**
 
