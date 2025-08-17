@@ -56,6 +56,6 @@ Resilience patterns öğrenmek için minimal mikroservis mimarisi
 * [ ] **Service-to-Service communication test**
 
 ### **Phase 4: Advanced Features**
-* [ ] **Complete Observability** (Jaeger + Loki ekleme)
+* [ ] **Complete Observability** (Jaeger + Loki)
 * [ ] **Kafka event streaming**
 * [ ] **Resilience patterns test** (Circuit breaker, timeout, retry)
