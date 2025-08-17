@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Book Platform - Microservice Architecture</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        .title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        
+        .architecture {
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+        
+        .client-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .client {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .kubernetes-cluster {
+            border: 3px dashed #3498db;
+            border-radius: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            position: relative;
+        }
+        
+        .cluster-title {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .istio-mesh {
+            border: 2px solid #2ecc71;
+            border-radius: 15px;
+            padding: 15px;
+            background: rgba(46, 204, 113, 0.05);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .mesh-title {
+            position: absolute;
+            top: -12px;
+            left: 15px;
+            background: #2ecc71;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .gateway {
+            background: linear-gradient(45deg, #9b59b6, #8e44ad);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .service-container {
+            border: 2px solid #34495e;
+            border-radius: 12px;
+            padding: 10px;
+            background: white;
+            position: relative;
+        }
+        
+        .service-title {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: #34495e;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+        
+        .service {
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .java { background: linear-gradient(45deg, #f39c12, #e67e22); }
+        .go { background: linear-gradient(45deg, #00cec9, #00b894); }
+        .python { background: linear-gradient(45deg, #6c5ce7, #a29bfe); }
+        
+        .proxy {
+            background: linear-gradient(45deg, #55a3ff, #003d82);
+            color: white;
+            padding: 8px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.8em;
+            margin-bottom: 8px;
+        }
+        
+        .database {
+            background: linear-gradient(45deg, #e17055, #d63031);
+            color: white;
+            padding: 8px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.8em;
+        }
+        
+        .observability-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .observability {
+            border: 2px solid #f39c12;
+            border-radius: 12px;
+            padding: 15px;
+            background: rgba(243, 156, 18, 0.05);
+            position: relative;
+        }
+        
+        .obs-title {
+            position: absolute;
+            top: -12px;
+            left: 15px;
+            background: #f39c12;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .obs-component {
+            background: linear-gradient(45deg, #fdcb6e, #e17055);
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 8px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        
+        .kafka {
+            border: 2px solid #e84393;
+            border-radius: 12px;
+            padding: 15px;
+            background: rgba(232, 67, 147, 0.05);
+            position: relative;
+        }
+        
+        .kafka-title {
+            position: absolute;
+            top: -12px;
+            left: 15px;
+            background: #e84393;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .kafka-component {
+            background: linear-gradient(45deg, #fd79a8, #e84393);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .external-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .flow-info {
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .patterns-info {
+            background: linear-gradient(45deg, #a29bfe, #6c5ce7);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        
+        .arrow {
+            font-size: 2em;
+            color: #3498db;
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        .legend {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        
+        .sync { background: linear-gradient(45deg, #74b9ff, #0984e3); }
+        .async { background: linear-gradient(45deg, #fd79a8, #e84393); }
+        .observe { background: linear-gradient(45deg, #fdcb6e, #e17055); }
+        .resilience { background: linear-gradient(45deg, #55a3ff, #003d82); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🚀 E-Book Platform - Microservice Architecture</h1>
+        
+        <div class="architecture">
+            <!-- Client Section -->
+            <div class="client-section">
+                <div class="client">
+                    📱 Client<br/>
+                    Web / Mobile UI
+                </div>
+                <div class="arrow">→</div>
+            </div>
+            
+            <!-- Kubernetes Cluster -->
+            <div class="kubernetes-cluster">
+                <div class="cluster-title">🐳 Minikube Kubernetes Cluster</div>
+                
+                <!-- Istio Service Mesh -->
+                <div class="istio-mesh">
+                    <div class="mesh-title">🌐 Istio Service Mesh</div>
+                    
+                    <!-- Gateway -->
+                    <div class="gateway">
+                        🚪 Istio Gateway<br/>
+                        Load Balancer & Traffic Management
+                    </div>
+                    
+                    <!-- Services Grid -->
+                    <div class="services-grid">
+                        <!-- User Service -->
+                        <div class="service-container">
+                            <div class="service-title">User Service Namespace</div>
+                            <div class="service java">
+                                ☕ User Service<br/>
+                                Java Spring Boot<br/>
+                                Port: 8080
+                            </div>
+                            <div class="proxy">📡 Envoy Sidecar</div>
+                            <div class="database">🗄️ User DB</div>
+                        </div>
+                        
+                        <!-- Book Service -->
+                        <div class="service-container">
+                            <div class="service-title">Book Service Namespace</div>
+                            <div class="service go">
+                                🐹 Book Service<br/>
+                                Go Gin<br/>
+                                Port: 8081
+                            </div>
+                            <div class="proxy">📡 Envoy Sidecar</div>
+                            <div class="database">🗄️ Book DB</div>
+                        </div>
+                        
+                        <!-- Order Service -->
+                        <div class="service-container">
+                            <div class="service-title">Order Service Namespace</div>
+                            <div class="service python">
+                                🐍 Order Service<br/>
+                                Python Flask<br/>
+                                Port: 8082
+                            </div>
+                            <div class="proxy">📡 Envoy Sidecar</div>
+                            <div class="database">🗄️ Order DB</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Observability and Kafka -->
+                <div class="observability-section">
+                    <!-- Observability Stack -->
+                    <div class="observability">
+                        <div class="obs-title">📊 Observability Stack</div>
+                        <div class="obs-component">🔍 Jaeger<br/>Distributed Tracing</div>
+                        <div class="obs-component">📈 Prometheus<br/>Metrics Collection</div>
+                        <div class="obs-component">📝 Loki<br/>Log Aggregation</div>
+                        <div class="obs-component">📤 Promtail<br/>Log Shipper</div>
+                        <div class="obs-component">📊 Grafana<br/>Unified Dashboard</div>
+                    </div>
+                    
+                    <!-- Kafka -->
+                    <div class="kafka">
+                        <div class="kafka-title">Event Streaming</div>
+                        <div class="kafka-component">
+                            📨 Kafka<br/>
+                            Async Communication<br/>
+                            Event-Driven Architecture
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- External Info -->
+            <div class="external-section">
+                <div class="flow-info">
+                    🔄 Request Flow<br/>
+                    1. User Registration<br/>
+                    2. Browse Books<br/>
+                    3. Place Order
+                </div>
+                
+                <div class="patterns-info">
+                    🛡️ Resilience Patterns<br/>
+                    • Circuit Breaker<br/>
+                    • Timeout & Retry<br/>
+                    • Fallback<br/>
+                    • Bulkhead
+                </div>
+            </div>
+        </div>
+        
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color sync"></div>
+                <span>Synchronous Communication (HTTP)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color async"></div>
+                <span>Asynchronous Events (Kafka)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color observe"></div>
+                <span>Observability (Traces, Metrics, Logs)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color resilience"></div>
+                <span>Resilience Patterns (Auto by Istio)</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
