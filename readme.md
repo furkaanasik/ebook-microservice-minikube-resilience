@@ -71,7 +71,7 @@ istioctl dashboard kiali
 ## 📋 Güncellenmiş Development Sırası
 
 ### **Phase 1: Foundation** 
-* [ ] **Minikube + Istio kurulumu**
+* [x] **Minikube + Istio kurulumu**
 * [ ] **Basic Observability stack** (Prometheus + Grafana)
 
 ### **Phase 2: Core Services**
