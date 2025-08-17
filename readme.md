@@ -30,38 +30,6 @@ Resilience patterns öğrenmek için minimal mikroservis mimarisi
 * **Order hatası** → Retry: 3 kez deneme
 * **Circuit Breaker** → Istio otomatik
 
-## 🚀 Kurulum Sırası
-
-```bash
-# 1. Minikube
-minikube start --memory=8192 --cpus=4
-
-# 2. Istio
-istioctl install --set values.defaultRevision=default -y
-kubectl label namespace default istio-injection=enabled
-
-# 3. Basic Observability
-kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.19/samples/addons/prometheus.yaml
-kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.19/samples/addons/grafana.yaml
-
-# 4. Kafka (Phase 4'te)
-kubectl create namespace kafka
-kubectl apply -f 'https://strimzi.io/install/latest?namespace=kafka' -n kafka
-```
-
-## 📊 Monitoring Access
-
-```bash
-# Grafana Dashboard
-kubectl port-forward svc/grafana 3000:3000 -n istio-system
-
-# Jaeger Tracing (Phase 4'te)
-kubectl port-forward svc/jaeger 16686:16686 -n istio-system
-
-# Kiali Service Mesh
-istioctl dashboard kiali
-```
-
 ## 🎯 Learning Goals
 * Mikroservis mimarisi
 * Resilience patterns (Circuit Breaker, Timeout, Retry, Fallback)
@@ -91,11 +59,3 @@ istioctl dashboard kiali
 * [ ] **Complete Observability** (Jaeger + Loki ekleme)
 * [ ] **Kafka event streaming**
 * [ ] **Resilience patterns test** (Circuit breaker, timeout, retry)
-
-## 🔄 Neden Bu Sıra:
-1. **Erken feedback**: Her servis yazıldıktan hemen sonra deploy edip test
-2. **Incremental complexity**: Basit HTTP ile başlayıp async events'e geçiş  
-3. **Debug kolaylığı**: Her adımda çalışan bir sistem
-4. **Real-world approach**: Production'da da böyle adım adım
-
-**Bu mimari Netflix, Uber gibi büyük şirketlerin kullandığı modern approach! 🌟**
