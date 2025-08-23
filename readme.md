@@ -47,8 +47,8 @@ Resilience patterns öğrenmek için minimal mikroservis mimarisi
 ### **Phase 2: Core Services**
 * [x] **User Service (Java Spring Boot)**
 * [x] **User Service Kubernetes deployment + Istio config**
-* [ ] **Book Service (Go Gin)** 
-* [ ] **Book Service Kubernetes deployment + Istio config**
+* [x] **Book Service (Go Gin)** 
+* [x] **Book Service Kubernetes deployment + Istio config**
 
 ### **Phase 3: Integration & Testing**
 * [ ] **Order Service (Python Flask)**
